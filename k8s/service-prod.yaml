@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-customer-restfull-lb
+  namespace: ivancl4udio
+spec:
+  selector:
+    app: customer-restfull
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

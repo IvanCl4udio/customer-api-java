@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customer-restfull
+  name: customer-restfull
+  namespace: ivancl4udio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-restfull
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: customer-restfull
+    spec:
+      containers:
+        - image: docker.io/ivancl4udio/customer-restfull:1.0.0
+          name: docker-image-app
+          imagePullPolicy: Always
+          env:
+            - name: KEY
+              valueFrom:
+                secretKeyRef:
+                  key: key
+                  name: configcat
+          volumeMounts:
+            - mountPath: /config
+              name: customer-restfull-config
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: customer-restfull-config
+          configMap:
+            name: customer-restfull-config
+            items:
+              - key: application.properties
+                path: application.properties

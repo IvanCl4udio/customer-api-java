@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  application.properties: "spring.application.name=\"DEV:: Rest API for Customers\"\r\n\r\nserver.port=8080\r\n\r\nspring.jpa.hibernate.ddl-auto=none\r\nspring.jpa.show-sql=true\r\nspring.jpa.properties.hibernate.format_sql=true\r\n\r\nlogging.level.com.quickwinsit=INFO\r\n\r\nspring.datasource.hikari.maxLifeTime=600000"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-05-11T17:48:38Z"
+  name: customer-restfull-config
+  namespace: ivancl4udio
+  resourceVersion: "895518"
+  uid: 4947da65-5d95-4f21-9ed3-0235911f3266
